@@ -1,11 +1,14 @@
 import {SHOW_TODO} from "./action"
 
 const initalstate={
-data:[]
+    search:"",
+    data:[]
 }
 
-export const showdata=(state=initalstate,action)=>{
+export const Showdata=(state=initalstate,action)=>{
+
     switch(action.type){
+        
         case SHOW_TODO:
         return{
             ...state,

@@ -1,15 +1,17 @@
 import axios from "axios"
 
-const SHOW_TODO='SHOW_TODO'
+export const SHOW_TODO='SHOW_TODO'
 
-const showTodo=(data)=>{
+export const ShowTodo=(data)=>{
+
     return{
         type:SHOW_TODO,
         payload:data
     }
 }
 
-const show=()=>(dispatch)=>{
+export const Show=(search,page)=>(dispatch)=>{
+
     axios.get(`https://rickandmortyapi.com/api/character/?name=${search}&page=${page}`)
-    .then((res)=>dispatch(showTodo(res.result.data))).catch((err)=>console.log(err))
+    .then((res)=>dispatch(ShowTodo(res.data.results))).catch((err)=>console.log(err))
 }

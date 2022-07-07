@@ -1,27 +1,26 @@
 import React from 'react'
-import { useState } from 'react'
-import axios from "axios"
+import { useState,useEffect } from 'react'
+
 import "./Search.css"
-//import Link from 'react-router-dom';
-//import {BasicUserCard} from "./BasicUserCard"
+import {Show} from "../redux/Search/action"
+import { useDispatch, useSelector } from 'react-redux'
+
 export const Search = () => {
 const [search,setsearch]=useState("")
 const [page,setpage]=useState(1)
-const [data,setdata]=useState([])
+
+const dispatch=useDispatch()
+const data=useSelector((state)=>state.data)
+useEffect(()=>{
+ dispatch(Show(search,page))
+},[])
  
-const getdata=()=>{
-    //console.log("inside functin")
-    axios.get(`https://rickandmortyapi.com/api/character/?name=${search}&page=${page}`).then((res)=>{
-        //console.log(res.data.results)
-        setdata(res.data.results)
-    }).catch((err)=>{
-        console.log(err)
-    })
-}
+
 
 const handlekeydown=(e)=>{
     if(e.key=='Enter'){
-        getdata()
+ 
+        dispatch(Show(search,page))
         setsearch("")
     }
 }
