@@ -11,7 +11,11 @@ export const ShowTodo=(data)=>{
 }
 
 export const Show=(search,page)=>(dispatch)=>{
-
+//console.log(search)
     axios.get(`https://rickandmortyapi.com/api/character/?name=${search}&page=${page}`)
-    .then((res)=>dispatch(ShowTodo(res.data.results))).catch((err)=>console.log(err))
+    .then((res)=>{
+        dispatch(ShowTodo(res.data.results))
+        //console.log(res.data)
+
+    }).catch((err)=>console.log(err))
 }
