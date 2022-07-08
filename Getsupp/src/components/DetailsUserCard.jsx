@@ -49,7 +49,7 @@ export const DetailsUserCard = () => {
               </div>
               <div>
                 <p className='change-color'>Location</p>
-                <b>{data.origin.name}</b>
+                {/*<b>{data.origin.name}</b>*/}
               </div>
             </div>
             <div className='specis-div'>
@@ -59,7 +59,7 @@ export const DetailsUserCard = () => {
               </div>
               <div>
                 <p className='change-color'>Origin</p>
-                <b>{data.location.name}</b>
+                {/*<b>{data.location.name}</b>*/}
               </div>
             </div>
           </div>
