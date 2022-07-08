@@ -1,72 +1,49 @@
-import React from 'react';
-import { Modal } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { openmodal } from '../redux/Modal/action';
-import "./BasicUserDetails.css"
+import React from 'react'
+import { DetailsUserCard } from './DetailsUserCard'
+import { GetModalID, openmodal } from '../redux/Modal/action'
+import { useDispatch, useSelector } from 'react-redux'
+import "./Search.css"
 
 export const BasicUserCard = () => {
- 
+    const data = useSelector((state) => state.data.data)
+    
+    const ModalVisible = useSelector((state) => state.modal.modalOpen)
   const dispatch = useDispatch()
-  const isModalVisible = useSelector((state) => state.modal.modalOpen)
-
-  const data = useSelector((state) => state.modal.ModalData)
- 
-console.log(data)
-  const handleOk = () => {
-    dispatch(openmodal(false));
-  };
-
-  const handleCancel = () => {
-    dispatch(openmodal(false));
-  };
-
+    function openPopUp(id) {
+    
+        if (id) {
+    
+          dispatch(GetModalID(id))
+        }
+    
+        dispatch(openmodal(true))
+      }
   return (
-    <>
+    <div>
+        <div className='parent'>
+        {data.map((e) => (
 
-      <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+          <div key={e.id}  >
 
-        {data ? <>
-        <div className='parent_div'>
-          <div className='image-div'>
-            <div className='image_card'>
-             <img src={data.image} />
-            </div>
-            <div className='name-div'>
-            <b className='top-name'>{data.name}</b>
-            <div className='status-div'>
-            <p>{data.status !== "unknown" ?<div className='radio-button'></div> : <div className='radio-button-blank'></div>}  </p>
-            <p>{data.status}-</p>
-            <p>{data.species}</p>
-            </div>
+
+            {ModalVisible ? <DetailsUserCard /> : null}
+
+            <div  onClick={() => openPopUp(e.id)} className='todolist' >
+              <div className='todolist_child1'>
+                <img src={e.image} className='image'></img>
+                <p>{e.name}</p>
+              </div>
+              <div className='todolist_child'>
+                 <p>{e.status !== "unknown" ?<div className='radio-button'></div> : <div className='radio-button-blank'></div>}  </p>
+                <p   >{e.status}-</p>
+                <p>{e.species}</p>
+              </div>
             </div>
           </div>
-          <hr></hr>
-         
-         <div className='gender-div'>
-         <div>
-          <p className='change-color'>Gender</p>
-          <b>{data.gender}</b>
-         </div>
-         <div>
-          <p className='change-color'>Location</p>
-          <b>{data.origin.name}</b>
-         </div>
-         </div>
-         <div className='specis-div'>
-           <div>
-           <p className='change-color'>species</p>
-           <b>{data.species}</b>
-           </div>
-           <div>
-           <p className='change-color'>Origin</p>
-           <b>{data.origin.name}</b>
-           </div>
-         </div>
-      </div>
-          
-        </> : "...loading"}
-      </Modal>
-    </>
-  );
-};
 
+        ))}
+
+      </div>
+    </div>
+  )
+}
