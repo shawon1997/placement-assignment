@@ -1,8 +1,9 @@
-import {SHOW_TODO} from "./action"
+import {Full_Data, SHOW_TODO} from "./action"
 
 const initalstate={
     search:"",
-    data:[]
+    data:[],
+    fulldata:[]
 }
 
 export const Showdata=(state=initalstate,action)=>{
@@ -13,6 +14,11 @@ export const Showdata=(state=initalstate,action)=>{
         return{
             ...state,
             data:action.payload
+        }
+        case Full_Data: 
+        return {
+                ...state,
+               fulldata:[...state.fulldata,...state.data] 
         }
         default:
             return state

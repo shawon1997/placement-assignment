@@ -6,7 +6,10 @@ import "./Search.css"
 
 export const BasicUserCard = () => {
     const data = useSelector((state) => state.data.data)
-    
+    //console.log(data)
+
+    //const fulldata = useSelector((state) => state.data.fulldata)
+    //console.log(fulldata)
     const ModalVisible = useSelector((state) => state.modal.modalOpen)
   const dispatch = useDispatch()
     function openPopUp(id) {

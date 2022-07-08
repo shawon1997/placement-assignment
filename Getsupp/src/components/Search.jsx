@@ -10,17 +10,26 @@ import { BasicUserCard } from './BasicUserCard'
 export const Search = () => {
 
   const [search, setsearch] = useState("")
+ const [savetoDB, setSaveToDb] = useState("");
   const [page, setpage] = useState(1)
   
   const dispatch = useDispatch()
   
+  const Handlechange=(e)=>{
+    setsearch(e.target.value)
+    
+  }
 
   useEffect(() => {
-    //console.log(page)
-    dispatch(Show(search, page))
+    
+    const Set =  setTimeout(() => {
+      
+      dispatch(Show(search, page))
+    }, 500);
+    
+    return ()=>clearTimeout(Set)
   }, [search,page])
   
-
 
 
   const handlekeydown = (e) => {
@@ -35,23 +44,23 @@ const buttonfunction=(e)=>{
 setpage(page+e)
 
 }
-//useEffect(() => {
-//  window.addEventListener('scroll', handleScroll);
-//  return () => window.removeEventListener('scroll', handleScroll);
-//}, [page]);
+useEffect(() => {
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, [page]);
 
-//function handleScroll() {
-//  if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
-//  setpage(page+10)
+function handleScroll() {
+  if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+  setpage(page+1)
  
-//}
+}
   return (
     <div>
       <div className="searchdiv">
       <div className='icon'>
         <i className="fa-solid fa-magnifying-glass" style={{ color: 'rgb(203, 208, 208)'}}></i></div>
         <div>
-        <input placeholder="search for a contact" value={search} onChange={(e) => setsearch(e.target.value)} onKeyDown={handlekeydown} className="search"></input>
+        <input placeholder="search for a contact" value={search} onChange={Handlechange} onKeyDown={handlekeydown} className="search"></input>
         </div>
 
       </div>
