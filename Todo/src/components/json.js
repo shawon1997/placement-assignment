@@ -1,0 +1,32 @@
+export const jsondata=[
+    {
+        'id':1,
+        'name':'shawon',
+        'role':'Mern',
+        'status':'active'
+    },
+    {
+        'id':2,
+        'name':'riyad',
+        'role':'frontend',
+        'status':'active'
+    },
+    {
+        'id':3,
+        'name':'Jaya',
+        'role':'frontend',
+        'status':'deactive'
+    },
+    {
+        'id':4,
+        'name':'Grazawal',
+        'role':'Mern',
+        'status':'active'
+    },
+    {
+        'id':5,
+        'name':'Ritik',
+        'role':'Backend',
+        'status':'active'
+    },
+]
