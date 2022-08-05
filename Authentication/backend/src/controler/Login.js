@@ -18,17 +18,18 @@ body("email").not().isEmpty().isEmail().withMessage("email box should not be emp
 }).bail()
 ,async(req,res)=>{
     try {
+        //console.log(req)
         const errors=validationResult(req)
         if(!errors.isEmpty()){
             return res.status(401).json({error:errors.array()})
         }
-        let user=await User.findOne({email:req.body.email}).lean().exec()
-        let match=user.checkPassword({password:req.body.password}).lean().exec()
+        let user=await User.findOne({email:req.body.email}).exec()
+        let match=user.checkPassword(req.body.password)
         if(!match){
-            res.status(401).send("Incorrect password")
+           return res.status(401).send("Incorrect password")
         }
        const token=newToken(user)
-        return res.status(201).send(user,token)
+        return res.status(201).send({user,token})
     } catch (err) {
         return res.status(401).send(err.message)
     }
