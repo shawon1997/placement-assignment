@@ -2,6 +2,8 @@ import React from 'react'
 import {Bar} from "react-chartjs-2"
 import {CategoryScale} from 'chart.js'; 
 import Chart from 'chart.js/auto';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 import "./Home.css"
 
 Chart.register(CategoryScale);
@@ -15,7 +17,11 @@ export const Top10 = () => {
                 data:[1422,838,400,376,306,157,155,150,126,108],
                 fill:true,
                 backgroundColor:'rgb(100, 229, 247)',
-                borderColor: 'rgb(6, 179, 202)'
+                borderColor: 'rgb(6, 179, 202)',
+                datalabels:{
+                    anchor:'end',
+                    align:'right'
+                }
             }
         ]
     }
@@ -41,7 +47,11 @@ export const Top10 = () => {
                 }
             }
         }
-    }} />
+    }} 
+        plugins={[
+            ChartDataLabels
+        ]}
+    />
     </div>
   )
 }
