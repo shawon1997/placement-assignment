@@ -5,6 +5,8 @@ import "./App.css";
 import { AdminLogin } from "./Componant/Admin/Admin";
 import { AdminPanel } from "./Componant/Admin/AdminPanel";
 import Login from "./Componant/Login/Login";
+import { LoginRoute } from "./Componant/LoginRoute/LoginRoute";
+
 import Register from "./Componant/Register/Register";
 import User from "./Componant/User/User";
 
@@ -13,6 +15,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Register/>}></Route>
+        <Route path="/loginroute" element={<LoginRoute/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/user" element={<User/>}></Route>
         <Route path="/admin" element={<AdminLogin/>}></Route>

@@ -159,7 +159,7 @@ const Register = () => {
                 Already a user?{" "}
                 <Link
              
-                  onClick={() => navigate("/login")}
+                  onClick={() => navigate("/loginroute")}
                 >
                   Login
                 </Link>
