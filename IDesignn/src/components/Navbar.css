@@ -1,0 +1,13 @@
+.navbar{
+    display:flex;
+    justify-content: space-around;
+    border: 1px solid;height: 4rem;
+    width: 100%;
+    margin: auto;
+    background-color: rgb(10, 10, 58);
+    color: white;
+    position: fixed;
+}
+.navbar>div{
+    margin: auto;
+}
