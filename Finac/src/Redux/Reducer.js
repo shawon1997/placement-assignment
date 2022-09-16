@@ -22,6 +22,12 @@ export const Reducer = (state=initialdata,action)=>{
             }
             
         }
+        case "getcatdata":{
+            return {
+                ...state,
+                cart:action.payload||JSON.parse(localStorage.getItem("cartdata"))
+            }
+        }
         case cardDetails:{
             return{
                 ...state,

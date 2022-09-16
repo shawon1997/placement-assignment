@@ -1,28 +1,64 @@
 import React, { useState,useEffect} from 'react'
 import {useSelector} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { cardDetails } from '../Redux/action'
+import { CartElement } from './CartElement'
 import { Nav } from './Nav'
 
 export const AddToCart = () => {
-  const [count,setcount]=useState(1)
+  
   const [Total,setTotal]=useState(0)
   const navigate=useNavigate()
   let cartdata=useSelector((state)=>state?.cart) 
   //console.log('cart',cartdata)
   useEffect(() => {
     let arr=cartdata?.map((e)=>e.price)
-    
-    let total=arr.reduce((a,b)=>a+b)
-    setTotal(total.toFixed(2))
-    console.log('total',total)
+ 
+    if(cartdata.length==1){
+      setTotal(cartdata[0].price)
+    }
+      else{
+       let total= arr?.reduce((a,b)=>{
+         
+         return a+b
+       },0)
+        
+       setTotal(total)
+      }
+  
+  }, [cartdata]);
+
+  //useEffect(() => {
+  //  let arr=cartdata?.map((e)=>e.price)
+  //     let total= arr?.reduce((a,b)=>{
+         
+  //       return a+b
+  //     },0)
+        
+  //     setTotal(total)
+  //}, [cartdata]);
+  useEffect(() => {
+    let arr=cartdata?.map((e)=>e.price)
+       let total= arr?.reduce((a,b)=>{
+         
+         return a+b
+       },0)
+        
+       setTotal(total)
   }, []);
- const handlechage=(e)=>{
-setcount(count+e)
- }
 
  const payment=()=>{
+  alert('Your Payment is Successfull')
   navigate('/payment')
  }
+
+const handleprice=(price)=>{
+  setTotal(price+Total) 
+}
+const handleDecPrice=(price)=>{
+  setTotal(Total-price)
+}
+
   return (
     <div>
     <Nav/>
@@ -31,26 +67,9 @@ setcount(count+e)
     
         {cartdata?.map((e)=>{
 
-        return <div   style={{display:'flex',border:"1px solid",textAlign:"center" , cursor:"pointer",height:'20rem' }} key={e.id} >
-        <div><img style={{width:"50%",padding:".5rem",height:'80%'}}src={e.image}></img></div>
-        <div>
-        <p>Title: {e.title}</p>
-        <p>Price: {e.price}</p>
-        <p>Category: {e.category}</p>
-        <span>
+        return <CartElement {...e} handleprice={handleprice} handleDecPrice={handleDecPrice}/>
 
-        <button onClick={()=>handlechage(1)}>+</button>
-      <input type='String' value={count} style={{width:'2rem'}}/>
-        <button onClick={()=>handlechage(-1)} disabled={count<=1?true:false}>-</button>
-        </span>
-        <button>Remove</button>
-        
-        </div>
-        
-        
-        </div>
-
-
+   
 
 } )}
     </div>

@@ -26,11 +26,30 @@ export const Singleproduct = (id)=> (dispatch) =>{
 
 }
 
+export const Removecart=(id)=>(dispatch,getState)=>{
+     console.log(id)
+     let data=getState().cart
+    
+        let filterdata=data.filter((e)=>{
+
+        return e.id!==id
+       })
+
+       localStorage.setItem("cartdata",JSON.stringify(filterdata))
+    //   dispatch(AddToCart())
+    dispatch(getcart())
+}
 
 
+export const getcart=()=>(dispatch)=>{
+   let cartdata= JSON.parse(localStorage.getItem('cartdata'))||[]
+
+   dispatch({type:"getcatdata",
+payload:cartdata})
+}
 export const AddToCart=(data)=>(dispatch)=>{
     
-    let addtocartdata=JSON.parse(localStorage.getItem('cartdata'))
+    let addtocartdata=JSON.parse(localStorage.getItem('cartdata'))||[]
      
     localStorage.setItem("cartdata",JSON.stringify([...addtocartdata,data]))
  
@@ -49,11 +68,11 @@ export const product_data=(datas)=>{
 }
 
 export const ProductData=()=>(dispatch)=>{
-    //console.log('.......catt..')
+     
     axios.get('https://fakestoreapi.com/products')
     .then((res)=>{
-        console.log(res.data)
-        console.log("res.data")
+        
+       
         dispatch(product_data(res.data))
   
     }).catch((err)=>{
@@ -68,7 +87,7 @@ export const ProductByCat=(catg)=>(dispatch)=>{
     //console.log(catg)
     axios.get(`https://fakestoreapi.com/products/category/${catg}`)
     .then((res)=>{
-        //console.log(res.data)
+      
    
     dispatch(product_data(res.data))
   

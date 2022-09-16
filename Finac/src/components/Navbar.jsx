@@ -4,6 +4,7 @@ import {useDispatch,useSelector} from 'react-redux'
 import './Navbar.css'
 import { Product } from './Product'
 import { useNavigate } from "react-router-dom";
+import { About } from './About'
 
 
 export const Navbar = () => {
@@ -93,7 +94,7 @@ const filterprice=(e)=>{
 <br></br>
 <br></br>
     <Product cat={cat}/>
-
+  <About/>
   </div>
 
   )
