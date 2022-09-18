@@ -17,7 +17,7 @@ export const Payment = () => {
     
         {cartdata?.map((e)=>{
 
-        return <div  style={{border:"1px solid",textAlign:"center" , cursor:"pointer" }} key={e.id} >
+        return <div  style={{backgroundColor:'rgb(253, 250, 246)',boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',borderRadius:'6px' ,textAlign:"center" , cursor:"pointer" }} key={e.id} >
         <div><img style={{width:"50%",padding:".5rem"}}src={e.image}></img></div>
         <div>
         <p>Title: {e.title}</p>

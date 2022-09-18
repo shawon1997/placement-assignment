@@ -36,7 +36,7 @@ export const ProductDetails = () => {
     <br></br>
     <br></br>
     <br></br>
-    <div style={{width:'30rem',border:"1px solid",textAlign:"center" , cursor:"pointer",padding:'1rem',margin:'auto' }}>
+    <div style={{width:'30rem',backgroundColor:'rgb(253, 250, 246)',boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',borderRadius:'6px' ,textAlign:"center" , cursor:"pointer",padding:'1rem',margin:'auto' }}>
       <img style={{width:"50%",padding:".5rem"}}src={data.image}></img>
       <p>Title: {data.title}</p>
       <p>Price: {data.price}</p>

@@ -75,7 +75,7 @@ const ProDetails=(e)=>{
 }
 
   return ( <div style={{display:'flex'}}>
-     <div style={{border:"1px solid", textAlign:"left",width:'40rem',marginTop:'3rem',padding:'1rem',marginLeft:'0.5rem'}}>
+     <div style={{backgroundColor:'rgb(253, 250, 246)', textAlign:"left",width:'40rem',marginTop:'3rem',padding:'1rem',marginLeft:'0.5rem'}}>
      
      <form onChange={(e)=>setfilterfunction(e)}>
      <div>
@@ -104,40 +104,12 @@ const ProDetails=(e)=>{
      <div>
 
     {cat ?  
-       filteredData?.length>0? <div style={{display:"grid", gridTemplateColumns:"repeat(5,1fr)", gap:".5rem",padding:"2rem"}}>
-    
-       <div style={{display:"flex", flexDirection:"column",justifyContent:"space-evenly",border:"1px solid", textAlign:"center"}}>
-         {brands?.map((el)=>{
-           return  <div key={el.id}>
-             <label htmlFor={el}>{el}</label>
-             <input  value={el} id={el} type="checkbox" onChange={(e)=>{
-               setfilterfunction(e)
-             }} />
-           </div>
-         })}
-       </div>
-      {filteredData?.map((e)=>{
- 
-             return <div   style={{border:"1px solid",textAlign:"center" , cursor:"pointer" }} key={e?.id} >
-             <img style={{width:"50%",padding:".5rem"}}src={e?.images?e?.images[0]:"https://freepikpsd.com/file/2019/10/image-not-available-png-2-Transparent-Images-Free.png"}></img>
-             <p>Title: {e?.title}</p>
-             <p>Brand: {e?.brand}</p>
-             <p>Price: {e?.price}</p>
-             <p>Rating: {e?.rating}</p>
-             <button onClick={()=>{
-               addtocartbtn(e)
-              }}>Add to cart</button>
-           </div>
-           
-           
-         
-         } )}
-     </div>: <div style={{display:"grid", gridTemplateColumns:"repeat(6,1fr)", gap:".5rem",padding:"2rem"}}>
+       <div style={{display:"grid", gridTemplateColumns:"repeat(5,1fr)", gap:".5rem",padding:"2rem"}}>
     
     
    {productsdata?.map((e)=>{
 
-          return <div   style={{border:"1px solid",textAlign:"center" , cursor:"pointer" }} key={e.id} >
+          return <div   style={{textAlign:"center" , cursor:"pointer",backgroundColor:'rgb(253, 250, 246)',boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',borderRadius:'6px' }} key={e.id} >
           <img style={{width:"50%",padding:".5rem"}}src={e.image}></img>
           <p><b>Title:</b>{e.title}</p>
       <p><b>Price: </b>{e.price}</p>
@@ -152,10 +124,10 @@ const ProDetails=(e)=>{
       
    
   : 
-   <div style={{display:"grid", gridTemplateColumns:"repeat(5,1fr)", gap:".5rem",padding:"2rem"}}>
+   <div style={{display:"grid", gridTemplateColumns:"repeat(5,1fr)", gap:".9rem",padding:"2rem"}}>
    {productsdata?.map((e)=>{
 
-return <div   style={{border:"1px solid",textAlign:"center" , cursor:"pointer" }} key={e.id} onClick={()=>ProDetails(e.id)}>
+return <div   style={{textAlign:"center" , cursor:"pointer",backgroundColor:'rgb(253, 250, 246)',boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',borderRadius:'6px'}} key={e.id} onClick={()=>ProDetails(e.id)}>
       
       <img style={{width:"50%",padding:".5rem"}}src={e.image}></img>
       <p><b>Title:</b>{e.title}</p>

@@ -4,7 +4,7 @@ export const About = () => {
   return (
     <div style={{marginLeft:'1rem'}}>
     <h2>Footer page</h2>
-        <div style={{display:"flex",width:'90rem',justifyContent:'space-around',border:'1px solid',padding:'1rem'}}>
+        <div style={{display:"flex",width:'90rem',justifyContent:'space-around',border:'1px solid',padding:'1rem',backgroundColor:'rgb(253, 248, 231)'}}>
     <div style={{width:'25%'}}><b>About</b>
     <p>Akssai believes in solving business issues for organizations. It has a very strong team of decades long experienced professionals CA, CS, CMA, Advocates, MBA, IT professionals, Retd. Bank officers and graduates. The team has worked in MNC’s, Big4’s, Govt companies and carry rich insights to navigate through challenging scenarios. The combined talent pool is available to help solving any business issues be it Finance related, IT related, tax related, legal issues, compliances, licensing, advisory, HR issues or any other domain of running a business. We have helped several foreign companies tap into the Indian markets over the years.</p>
     </div>

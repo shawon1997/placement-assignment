@@ -53,9 +53,12 @@ export const AddToCart = () => {
  }
 
 const handleprice=(price)=>{
-  setTotal(price+Total) 
+  console.log('+',price)
+  setTotal(Total+price) 
+  //console.log(price)
 }
 const handleDecPrice=(price)=>{
+  console.log('-',price)
   setTotal(Total-price)
 }
 
@@ -67,14 +70,16 @@ const handleDecPrice=(price)=>{
     
         {cartdata?.map((e)=>{
 
-        return <CartElement {...e} handleprice={handleprice} handleDecPrice={handleDecPrice}/>
+        return<div style={{width:'40rem'}}>
+        <CartElement {...e} handleprice={handleprice} handleDecPrice={handleDecPrice}/>
+        </div>
 
    
 
 } )}
     </div>
     <div style={{width:'15rem',border:'1 px solid',marginLeft:'50rem'}}>
-    <p><b>Total Amount: </b>{Total}</p>
+    <p><b>Total Amount: </b>{Total.toFixed(2)}</p>
     <button style={{backgroundColor:'green',color:'white',height:'3rem',padding:'1rem',borderRadius:'6px',fontSize:'20px'}} onClick={()=>payment()}>Make Payment</button>
     </div>
     <br></br>
